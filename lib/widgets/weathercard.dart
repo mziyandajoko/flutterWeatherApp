@@ -90,7 +90,7 @@ class CardWeather extends StatelessWidget {
                     width: 30,
                   ),
                   Text(
-                    '12\u00b0/7\u00b0',
+                    '${map['maxtemp']}\u00b0/${map['mintemp']}\u00b0',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
