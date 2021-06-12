@@ -23,7 +23,8 @@ class WeatherCard extends StatelessWidget {
                     ? Text(
                         'Something went wrong while fetcjing Data. ${value.error}')
                     : ListView.builder(
-                        itemCount: value.map['Cape Town'].legnth,
+                        itemCount: 7,
+                        //value.map['Cape Town'].legnth,
                         itemBuilder: (context, index) {
                           return CardWeather(
                             map: value.map['Cape Town'][index],
