@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:madolo_217006168/models/weather_data.dart';
 import 'package:provider/provider.dart';
 
@@ -11,28 +8,25 @@ class WeatherCard extends StatelessWidget {
 
   Widget build(BuildContext context) {
     context.read<WeatherData>().fetchData;
-    return RefreshIndicator(
-      onRefresh: () async {},
-      child: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-          child: Consumer<WeatherData>(builder: (context, value, child) {
-            return value.map.length == 0 && !value.error
-                ? CircularProgressIndicator()
-                : value.error
-                    ? Text(
-                        'Something went wrong while fetcjing Data. ${value.error}')
-                    : ListView.builder(
-                        itemCount: 7,
-                        //value.map['Cape Town'].legnth,
-                        itemBuilder: (context, index) {
-                          return CardWeather(
-                            map: value.map['Cape Town'][index],
-                          );
-                        },
-                      );
-          }),
-        ),
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+        child: Consumer<WeatherData>(builder: (context, value, child) {
+          return value.map.length == 0 && !value.error
+              ? CircularProgressIndicator()
+              : value.error
+                  ? Text(
+                      'Something went wrong while fetcjing Data. ${value.error}')
+                  : ListView.builder(
+                      itemCount: 7,
+                      //value.map['Cape Town'].legnth,
+                      itemBuilder: (context, index) {
+                        return CardWeather(
+                          map: value.map['Cape Town'][index],
+                        );
+                      },
+                    );
+        }),
       ),
     );
   }
@@ -68,7 +62,7 @@ class CardWeather extends StatelessWidget {
                     width: 20,
                   ),
                   Text(
-                    '${map['wind']}',
+                    '${map['humidity']}',
                     style: TextStyle(
                       fontSize: 16,
                     ),
