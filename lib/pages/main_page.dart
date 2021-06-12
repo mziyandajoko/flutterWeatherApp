@@ -24,12 +24,9 @@ class MainPage extends StatelessWidget {
             height: 10,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                return WeatherCard();
-              },
-            ),
+            child: 
+                 WeatherCard(),
+              
           ),
         ],
       ),
