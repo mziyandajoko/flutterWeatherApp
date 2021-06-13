@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:madolo_217006168/models/weather_data.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 class WeatherCard extends StatelessWidget {
   @override
@@ -13,22 +12,24 @@ class WeatherCard extends StatelessWidget {
     return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-        child: Consumer<WeatherData>(builder: (context, value, child) {
-          return value.map.length == 0 && !value.error
-              ? CircularProgressIndicator()
-              : value.error
-                  ? Text(
-                      'Something went wrong while fetcjing Data. ${value.error}')
-                  : ListView.builder(
-                      itemCount: 7,
-                      //value.map['Cape Town'].legnth,
-                      itemBuilder: (context, index) {
-                        return CardWeather(
-                          map: value.map['Cape Town'][index],
-                        );
-                      },
-                    );
-        }),
+        child: Consumer<WeatherData>(
+          builder: (context, value, child) {
+            return value.map.length == 0 && !value.error
+                ? CircularProgressIndicator()
+                : value.error
+                    ? Text(
+                        'Something went wrong while fetcjing Data. ${value.error}')
+                    : ListView.builder(
+                        itemCount: 7,
+                        //value.map['Cape Town'].legnth,
+                        itemBuilder: (context, index) {
+                          return CardWeather(
+                            map: value.map['Cape Town'][index],
+                          );
+                        },
+                      );
+          },
+        ),
       ),
     );
   }
@@ -137,12 +138,3 @@ class CardWeather extends StatelessWidget {
     );
   }
 }
-
-// Future<Map<String,dynamic>>fetchData() async{
-//   final response = await get(Uri.parse('https://dl.dropbox.com/s/u1gb9ovxvtaugqj/weather.json?dl=0'));
-//   if (response.statusCode == 200){
-//     return jsonDecode(response.body);
-//   }else{
-//     throw Exception('data not found');
-//   }
-// }
