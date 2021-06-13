@@ -81,16 +81,43 @@ class CardWeather extends StatelessWidget {
                   SizedBox(
                     width: 20,
                   ),
-                  Image.asset(
-                    'assets/images/fair_day.png',
-                    height: 25,
-                    width: 25,
-                  ),
-                  Image.asset(
-                    'assets/images/fair_night.png',
-                    height: 25,
-                    width: 25,
-                  ),
+                  if ('${map['condition_day']}' == 'Cloudy')
+                    Image.asset(
+                      'assets/images/cloudy_day.png',
+                      height: 25,
+                      width: 25,
+                    ),
+                  if ('${map['condition_day']}' == 'Rain')
+                    Image.asset(
+                      'assets/images/rain.png',
+                      height: 25,
+                      width: 25,
+                    ),
+                  if ('${map['condition_day']}' == 'Fair')
+                    Image.asset(
+                      'assets/images/fair_day.png',
+                      height: 25,
+                      width: 25,
+                    ),
+                  // night condition logic
+                  if ('${map['condition_night']}' == 'Cloudy')
+                    Image.asset(
+                      'assets/images/cloudy_night.png',
+                      height: 25,
+                      width: 25,
+                    ),
+                  if ('${map['condition_night']}' == 'Rain')
+                    Image.asset(
+                      'assets/images/rain.png',
+                      height: 25,
+                      width: 25,
+                    ),
+                  if ('${map['condition_night']}' == 'Fair')
+                    Image.asset(
+                      'assets/images/fair_night.png',
+                      height: 25,
+                      width: 25,
+                    ),
                   SizedBox(
                     width: 30,
                   ),

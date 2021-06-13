@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:madolo_217006168/models/weather_data.dart';
 
@@ -61,11 +62,12 @@ import 'package:madolo_217006168/models/weather_data.dart';
 //     );
 //   }
 // }
-
+// int.parse(DateFormat('H').format(DateTime.now()));
 class CurrentDayWidget extends StatelessWidget {
   CurrentDayWidget({
     Key key,
   }) : super(key: key);
+  // if (DateFormat('EEEE').format(DateTime.now()) == '${map['day']}')
 
   @override
   Widget build(BuildContext context) {
@@ -79,11 +81,18 @@ class CurrentDayWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                height: 110,
-                width: 110,
-                child: Image.asset('assets/images/rain.png'),
-              ),
+              if (int.parse(DateFormat('H').format(DateTime.now())) != 06)
+                Container(
+                  height: 110,
+                  width: 110,
+                  child: Image.asset('assets/images/rain.png'),
+                ),
+              if (int.parse(DateFormat('H').format(DateTime.now())) > 18)
+                Container(
+                  height: 110,
+                  width: 110,
+                  child: Image.asset('assets/images/cloudy_night.png'),
+                ),
               SizedBox(
                 width: 10,
               ),
