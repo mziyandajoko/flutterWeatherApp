@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:madolo_217006168/models/weather_data.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class WeatherCard extends StatelessWidget {
   @override
@@ -47,13 +49,22 @@ class CardWeather extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '${map['day']}',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              if (DateFormat('EEEE').format(DateTime.now()) != '${map['day']}')
+                Text(
+                  '${map['day']} ',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
+              if (DateFormat('EEEE').format(DateTime.now()) == '${map['day']}')
+                Text(
+                  'Today',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               Row(
                 children: [
                   Image.asset(
