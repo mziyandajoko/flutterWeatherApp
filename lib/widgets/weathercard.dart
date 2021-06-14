@@ -15,7 +15,7 @@ class WeatherCard extends StatelessWidget {
         child: Consumer<WeatherData>(
           builder: (context, value, child) {
             return value.map.length == 0 && !value.error
-                ? CircularProgressIndicator()
+                ? Center(child: CircularProgressIndicator())
                 : value.error
                     ? Text(
                         'Something went wrong while fetcjing Data. ${value.error}')
@@ -41,9 +41,11 @@ class CardWeather extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dynamic today =
+        DateFormat('EEEE').format(DateTime.now()) == '${map['day']}';
     return Container(
       child: Card(
-        color: Colors.white,
+        color: today ? Colors.blue : Colors.white,
         elevation: 10,
         child: Padding(
           padding: const EdgeInsets.all(14.0),
