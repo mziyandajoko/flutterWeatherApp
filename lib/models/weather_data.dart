@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:intl/intl.dart';
 
 class WeatherData with ChangeNotifier {
   Map<String, dynamic> _map = {};
@@ -37,5 +38,14 @@ class WeatherData with ChangeNotifier {
     _map = {};
     _errorMessage = '';
     notifyListeners();
+  }
+
+  Map<String, dynamic> currentday() {
+    var day = DateFormat('EEEE').format(DateTime.now());
+
+    return (_map['Cape Town'] as List<dynamic>).firstWhere(
+      (element) => element['day'] == day,
+      orElse: () => null,
+    );
   }
 }

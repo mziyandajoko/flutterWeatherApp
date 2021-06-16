@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:madolo_217006168/models/weather_data.dart';
 import 'package:provider/provider.dart';
 
 class CurrentDayWidget extends StatelessWidget {
-  CurrentDayWidget({
+  const CurrentDayWidget({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    context.read<WeatherData>().fetchData;
-
     return Consumer<WeatherData>(
       builder: (context, value, child) {
+        var data = value.currentday();
         return Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20.0,
@@ -32,7 +32,7 @@ class CurrentDayWidget extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    '12\u00b0',
+                    '${data['maxtemp']}\u00b0',
                     style: TextStyle(fontSize: 70),
                   ),
                 ],
@@ -47,13 +47,13 @@ class CurrentDayWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '12\u00b0/7\u00b0',
+                    '${data['maxtemp']}\u00b0/${data['mintemp']}\u00b0',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    '12kph wind',
+                    '${data['maxtemp']}kph wind',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
