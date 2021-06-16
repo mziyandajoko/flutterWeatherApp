@@ -17,27 +17,23 @@ class MainPage extends StatelessWidget {
       create: (context) => WeatherData(),
       builder: (context, child) {
         return Scaffold(
-          body: isLoading
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [CircularProgressIndicator()])
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const TopBanner(),
-                    CurrentDayWidget(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    const AppLabel(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Expanded(
-                      child: WeatherCard(),
-                    ),
-                  ],
-                ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const TopBanner(),
+              CurrentDayWidget(),
+              SizedBox(
+                height: 10,
+              ),
+              const AppLabel(),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: WeatherCard(),
+              ),
+            ],
+          ),
         );
       },
     );
