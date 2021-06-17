@@ -40,6 +40,17 @@ class CurrentDay extends StatelessWidget {
             child: Consumer<WeatherData>(
               builder: (context, value, child) {
                 var data = value.currentday();
+                todayDate() {
+                  var now = new DateTime.now();
+                  var formatter = new DateFormat('dd-MM-yyyy');
+                  String formattedTime = DateFormat('kk:mm:a').format(now);
+                  String formattedDate = formatter.format(now);
+                  print(formattedTime);
+                  print(formattedDate);
+                }
+
+                print(todayDate());
+
                 return value.map.length == 0 && !value.error
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.start,
