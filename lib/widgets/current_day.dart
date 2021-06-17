@@ -114,9 +114,9 @@ class CurrentDay extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                if (text == formattedTime)
+                                if (text != formattedTime)
                                   Text(
-                                    '${data['condition_day']}',
+                                    '${data['condition_night']}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
