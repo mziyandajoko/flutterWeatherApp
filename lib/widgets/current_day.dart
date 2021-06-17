@@ -73,7 +73,7 @@ class CurrentDay extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                if (text == formattedTime &&
+                                if (text != formattedTime &&
                                     '${data['condition_day']}' == 'Fair')
                                   Container(
                                     height: 110,
@@ -81,25 +81,28 @@ class CurrentDay extends StatelessWidget {
                                     child: Image.asset(
                                         'assets/images/fair_day.png'),
                                   ),
-                                if (text != formattedTime &&
-                                    '${data['condition_day']}' == 'Fair')
+                                if (text == formattedTime &&
+                                    '${data['condition_day']}' == 'Cloudy')
                                   Container(
                                     height: 110,
                                     width: 110,
                                     child: Image.asset(
-                                        'assets/images/fair_night.png'),
+                                        'assets/images/cloudy_night.png'),
+                                  ),
+                                if (text != formattedTime &&
+                                    '${data['condition_day']}' == 'Rain')
+                                  Container(
+                                    height: 110,
+                                    width: 110,
+                                    child:
+                                        Image.asset('assets/images/rain.png'),
                                   ),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                if (text == formattedTime)
-                                  Text(
-                                    '${data['maxtemp']}\u00b0',
-                                    style: TextStyle(fontSize: 70),
-                                  ),
                                 if (text != formattedTime)
                                   Text(
-                                    '${data['mintemp']}\u00b0',
+                                    '${data['maxtemp']}\u00b0',
                                     style: TextStyle(fontSize: 70),
                                   ),
                               ],
