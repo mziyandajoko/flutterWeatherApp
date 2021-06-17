@@ -49,7 +49,15 @@ class CurrentDay extends StatelessWidget {
                   print(formattedDate);
                 }
 
-                print(todayDate());
+                // DateTime dateTime = dateFormat.parse("2019-07-19 8:40:23");
+                var now = DateTime.now();
+                var month = now.month.toString().padLeft(2, '0');
+                var day = now.day.toString().padLeft(2, '0');
+                var text = '${now.hour}:${now.minute}';
+                // DateTime dateTime = dateFormat.parse("2019-07-19 8:40:23");
+                String formattedTime = DateFormat('6:00:00').format(now);
+
+                print(formattedTime);
 
                 return value.map.length == 0 && !value.error
                     ? Column(
@@ -65,29 +73,54 @@ class CurrentDay extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                Container(
-                                  height: 110,
-                                  width: 110,
-                                  child: Image.asset('assets/images/rain.png'),
-                                ),
+                                if (text == formattedTime &&
+                                    '${data['condition_day']}' == 'Fair')
+                                  Container(
+                                    height: 110,
+                                    width: 110,
+                                    child: Image.asset(
+                                        'assets/images/fair_day.png'),
+                                  ),
+                                if (text != formattedTime &&
+                                    '${data['condition_day']}' == 'Fair')
+                                  Container(
+                                    height: 110,
+                                    width: 110,
+                                    child: Image.asset(
+                                        'assets/images/fair_night.png'),
+                                  ),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text(
-                                  '${data['maxtemp']}\u00b0',
-                                  style: TextStyle(fontSize: 70),
-                                ),
+                                if (text == formattedTime)
+                                  Text(
+                                    '${data['maxtemp']}\u00b0',
+                                    style: TextStyle(fontSize: 70),
+                                  ),
+                                if (text != formattedTime)
+                                  Text(
+                                    '${data['mintemp']}\u00b0',
+                                    style: TextStyle(fontSize: 70),
+                                  ),
                               ],
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Text(
-                                  '${data['condition_day']}',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                if (text == formattedTime)
+                                  Text(
+                                    '${data['condition_day']}',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
+                                if (text == formattedTime)
+                                  Text(
+                                    '${data['condition_day']}',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 Text(
                                   '${data['maxtemp']}\u00b0/${data['mintemp']}\u00b0',
                                   style: TextStyle(
